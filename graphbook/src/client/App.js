@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../assets/css/style.css';
+import { Helmet } from 'react-helmet';
 
 const initialPosts = [
     {
@@ -34,17 +35,22 @@ const App = () => {
                 username: 'Fake User'
             }
         };
-        setPosts([newPost, ...posts]);
+        setPosts([newPost, ...posts])
+            // .then(console.log('posts in handleSubmit', posts));
             // console.log('[newPost, ...posts]', [newPost, ...posts]);
             // console.log('posts', posts);
         setPostContent('');
-            console.log('posts in handleSubmit', posts);
+            // console.log('posts in handleSubmit', posts);
     };
 
-        console.log('posts before return', posts);
+        // console.log('posts before return', posts);
     return (
         // <div>Hello World!</div>
        <div className="container">
+            <Helmet>
+                <title>Graphbook - Feed</title>
+                <meta name="description" content="Newsfeed of all your friends on Graphbook" />
+            </Helmet>
             <div className="postForm">
                 <form onSubmit={handleSubmit}>
                     <textarea value={postContent} onChange={(e) => setPostContent(e.target.value)} placeholder="Write your custom post!"/>
